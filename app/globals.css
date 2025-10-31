@@ -151,3 +151,53 @@ article li {
 html {
   scroll-behavior: smooth;
 }
+
+/* Print styles for resume page */
+@media print {
+  /* Hide interactive elements */
+  header,
+  footer,
+  button,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Adjust page layout */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Ensure proper page breaks */
+  section {
+    page-break-inside: avoid;
+  }
+  
+  /* Adjust spacing for print */
+  .max-w-5xl {
+    max-width: 100% !important;
+  }
+  
+  /* Remove shadows and fancy effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  /* Adjust font sizes for print */
+  body {
+    font-size: 12pt !important;
+  }
+  
+  h1 {
+    font-size: 24pt !important;
+  }
+  
+  h2 {
+    font-size: 18pt !important;
+  }
+  
+  h3 {
+    font-size: 14pt !important;
+  }
+}

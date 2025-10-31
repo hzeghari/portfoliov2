@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
 import About from './About';
+import Experience from './Experience';
 
 export default function Layout(): React.ReactElement {
   return (
@@ -16,6 +17,7 @@ export default function Layout(): React.ReactElement {
         <div className='px-8 sm:px-4 max-w-7xl mx-auto w-full'>
           <Hero />
           <About />
+          <Experience />
         </div>
       </main>
 

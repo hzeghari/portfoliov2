@@ -9,11 +9,17 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: 'JavaScript (ES6+)' },
-  { name: 'React' },
+  { name: 'TypeScript' },
+  { name: 'React.js' },
   { name: 'Node.js' },
-  { name: 'PHP' },
-  { name: 'Laravel' },
-  { name: 'WordPress' },
+  { name: 'Nest.js' },
+  { name: 'Express.js' },
+  { name: 'MongoDB' },
+  { name: 'SQL' },
+  { name: 'Redux' },
+  { name: 'React Query' },
+  { name: 'Tailwind CSS' },
+  { name: 'Docker' },
 ];
 
 export default function About(): React.ReactElement {
@@ -46,15 +52,16 @@ export default function About(): React.ReactElement {
         <div className='space-y-4'>
           <div className='font-mono text-sm sm:text-xs leading-relaxed'>
             <p className='mb-4'>
-              Hey! I&apos;m Hamza, a software engineer based in Casablanca,
-              Morocco who enjoys building stuff that lives on the net. I develop
-              remarkable websites and web apps that offer intuitive,
+              Hey! I&apos;m Hamza, a full-stack developer based in Casablanca,
+              Morocco who enjoys building innovative solutions that live on the web. 
+              I develop remarkable websites and web applications that offer intuitive,
               pixel-perfect user interfaces with efficient and modern backends.
             </p>
             <p className='mb-4'>
-              Shortly after graduating from SETTAT Faculty of Science and
-              Technology, I joined the company Applite in which I work on a huge
-              variety of interesting and significant projects on a daily basis.
+              Currently working at IZI Safety, I contribute to the development and enhancement 
+              of platform features while collaborating with cross-functional teams. Previously, 
+              I&apos;ve worked on various freelance projects and at Applite, gaining extensive 
+              experience in full-stack development.
             </p>
             <p className='mb-4'>
               Here are a few technologies I&apos;ve been working with recently:

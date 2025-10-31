@@ -4,6 +4,7 @@ export interface NavItem {
 }
 
 export const NAV: NavItem[] = [
-  { name: 'About', slug: '/about' },
-  { name: 'Uses', slug: '/uses' },
+  { name: 'About', slug: '/#about' },
+  { name: 'Experience', slug: '/#experience' },
+  { name: 'Resume', slug: '/resume' },
 ];

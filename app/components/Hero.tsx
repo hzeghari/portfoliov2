@@ -79,8 +79,8 @@ export default function Hero(): React.ReactElement {
           variants={word}
         >
           <p className='font-mono text-lg sm:text-base leading-relaxed opacity-80'>
-            I&apos;m a software engineer based in Casablanca, Morocco, specializing in building 
-            (and occasionally designing) exceptional, high-quality websites and applications.
+            I&apos;m a full-stack developer based in Casablanca, Morocco, specializing in building 
+            exceptional web applications with modern technologies like React, TypeScript, Node.js, and Nest.js.
           </p>
         </motion.div>
 

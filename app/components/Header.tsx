@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ThemeButton from './ThemeButton';
+import NavBar from './NavBar';
 
 export default function Header(): React.ReactElement {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,8 +72,9 @@ export default function Header(): React.ReactElement {
             </Link>
           </motion.div>
 
-          {/* Actions */}
-          <motion.div className='flex items-center gap-4' variants={word}>
+          {/* Navigation & Actions */}
+          <motion.div className='flex items-center gap-6 sm:gap-4' variants={word}>
+            <NavBar />
             <ThemeButton />
           </motion.div>
         </nav>
