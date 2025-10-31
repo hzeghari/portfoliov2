@@ -14,6 +14,18 @@
   --color-primary-800: #7D7D69;
   --color-primary-900: #5F5F4F;
 
+  /* Color palette - secondary black shades */
+  --color-black-50: #F2F2F2;
+  --color-black-100: #E6E6E6;
+  --color-black-200: #BFBFBF;
+  --color-black-300: #999999;
+  --color-black-400: #737373;
+  --color-black-500: #4D4D4D;
+  --color-black-600: #262626;
+  --color-black-700: #0D0D0D;
+  --color-black-800: #000000;
+  --color-black-900: #000000;
+
   /* Custom breakpoints (max-width) */
   --breakpoint-sm: 550px;
   --breakpoint-md: 1100px;
