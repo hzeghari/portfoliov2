@@ -13,37 +13,80 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hamza Zeghari - Software Engineer | Full Stack Developer",
-  description: "Software engineer based in Casablanca, Morocco specializing in building exceptional websites and web applications with React, Node.js, PHP, and Laravel.",
-  keywords: ["Hamza Zeghari", "Software Engineer", "Full Stack Developer", "Web Developer", "React", "Node.js", "PHP", "Laravel", "Casablanca", "Morocco"],
-  authors: [{ name: "Hamza Zeghari", url: "https://hamzazeghari.com" }],
+  metadataBase: new URL("https://hzeghari.dev"),
+  title: {
+    default: "Hamza Zeghari - Full Stack Developer | React, TypeScript, Node.js",
+    template: "%s | Hamza Zeghari",
+  },
+  description: "Full-stack developer based in Casablanca, Morocco. Specializing in building scalable web applications with React, TypeScript, Node.js, and Nest.js. Currently working at IZI Safety.",
+  keywords: [
+    "Hamza Zeghari",
+    "hzeghari",
+    "Full Stack Developer",
+    "Software Engineer",
+    "Web Developer",
+    "React Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
+    "Nest.js Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Nest.js",
+    "MongoDB",
+    "SQL",
+    "Tailwind CSS",
+    "Next.js",
+    "Express.js",
+    "Docker",
+    "IZI Safety",
+    "Casablanca",
+    "Morocco",
+    "Freelance Developer",
+    "Web Applications",
+    "API Development",
+  ],
+  authors: [
+    { name: "Hamza Zeghari", url: "https://hzeghari.dev" },
+  ],
   creator: "Hamza Zeghari",
+  publisher: "Hamza Zeghari",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://hzeghari.me",
-    title: "Hamza Zeghari - Software Engineer | Full Stack Developer",
-    description: "Software engineer based in Casablanca, Morocco specializing in building exceptional websites and web applications.",
-    siteName: "Hamza Zeghari Portfolio",
+    url: "https://hzeghari.dev",
+    title: "Hamza Zeghari - Full Stack Developer",
+    description: "Full-stack developer specializing in React, TypeScript, Node.js, and Nest.js. Building scalable web applications in Casablanca, Morocco.",
+    siteName: "Hamza Zeghari - Developer Portfolio",
     images: [
       {
         url: "/images/01.png",
         width: 1200,
         height: 630,
-        alt: "Hamza Zeghari - Software Engineer",
+        alt: "Hamza Zeghari - Full Stack Developer Portfolio",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hamza Zeghari - Software Engineer",
-    description: "Software engineer based in Casablanca, Morocco specializing in building exceptional websites and web applications.",
+    title: "Hamza Zeghari - Full Stack Developer",
+    description: "Full-stack developer specializing in React, TypeScript, Node.js, and Nest.js. Building scalable web applications.",
     creator: "@hzeghari",
+    site: "@hzeghari",
     images: ["/images/01.png"],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -52,12 +95,27 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  alternates: {
+    canonical: "https://hzeghari.dev",
+  },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "your-google-verification-code", // Add when you get it from Google Search Console
+    // yandex: "your-yandex-verification-code",
+    // other: "your-other-verification-code",
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
