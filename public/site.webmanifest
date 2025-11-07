@@ -1,0 +1,35 @@
+{
+  "name": "Hamza Zeghari - Full Stack Developer",
+  "short_name": "HZeghari",
+  "description": "Full-stack developer specializing in React, TypeScript, Node.js, and Nest.js",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#CCCCC2",
+  "theme_color": "#CCCCC2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

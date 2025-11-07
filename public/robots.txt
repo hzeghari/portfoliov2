@@ -1,0 +1,13 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow specific paths
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap location
+Sitemap: https://hzeghari.dev/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
