@@ -4,8 +4,8 @@ export interface SocialProfile {
 }
 
 export const SOCIAL_PROFILES: SocialProfile[] = [
-  { name: 'Instagram', slug: 'https://www.instagram.com/the47.js/' },
-  { name: 'Twitter', slug: 'https://twitter.com/the__fortyseven/' },
-  { name: 'LinkedIn', slug: 'https://www.linkedin.com/in/hzeghari/' },
-  { name: 'GitHub', slug: 'https://github.com/hzeghari/' },
+  { name: 'Instagram', slug: 'https://www.instagram.com/hzeghari47' },
+  { name: 'Twitter', slug: 'https://twitter.com/hzeghari47' },
+  { name: 'LinkedIn', slug: 'https://www.linkedin.com/in/hzeghari' },
+  { name: 'GitHub', slug: 'https://github.com/hzeghari' },
 ];
