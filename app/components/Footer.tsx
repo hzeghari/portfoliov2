@@ -86,11 +86,11 @@ export default function Footer(): React.ReactElement {
 
       {/* Mobile Footer */}
       <footer 
-        className='md:hidden sticky bottom-0 z-50 p-5 mt-auto font-mono bg-(--background) bg-opacity-90 backdrop-blur-sm'
+        className='md:hidden sticky bottom-0 z-50 p-6 sm:p-5 mt-auto font-mono bg-(--background) bg-opacity-95 backdrop-blur-md border-t border-current border-opacity-10'
         role="contentinfo"
       >
         <nav 
-          className='flex flex-wrap gap-6 items-center justify-center'
+          className='flex flex-wrap gap-8 sm:gap-6 items-center justify-center mb-4'
           aria-label="Social media and contact links"
         >
           {SOCIAL_PROFILES.map((profile) => (

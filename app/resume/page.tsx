@@ -34,43 +34,43 @@ export default function ResumePage(): React.ReactElement {
   };
 
   return (
-    <div className='min-h-screen py-24 px-8 sm:px-4'>
+    <div className='min-h-screen py-24 sm:py-16 px-8 sm:px-4'>
       <div className='max-w-5xl mx-auto'>
         {/* Header with Name and Contact */}
         <motion.header
-          className='mb-12 text-center'
+          className='mb-12 sm:mb-8 text-center'
           initial="hidden"
           animate="show"
           variants={fadeInUp}
         >
-          <h1 className='font-serif text-5xl sm:text-3xl font-bold mb-4'>
+          <h1 className='font-serif text-5xl md:text-4xl sm:text-3xl font-bold mb-4'>
             {SOCIAL_INFOS.fullname}
           </h1>
-          <div className='flex flex-wrap justify-center gap-4 font-mono text-sm sm:text-xs text-primary-800 dark:text-primary-400'>
-            <a href={`mailto:${SOCIAL_INFOS.email}`} className='hover:underline'>
+          <div className='flex flex-wrap justify-center gap-3 sm:gap-2 font-mono text-sm sm:text-xs text-primary-800 dark:text-primary-400'>
+            <a href={`mailto:${SOCIAL_INFOS.email}`} className='hover:underline min-h-11 flex items-center'>
               {SOCIAL_INFOS.email}
             </a>
-            <span>•</span>
-            <a href={`tel:${SOCIAL_INFOS.phone}`} className='hover:underline'>
+            <span className='flex items-center'>•</span>
+            <a href={`tel:${SOCIAL_INFOS.phone}`} className='hover:underline min-h-11 flex items-center'>
               {SOCIAL_INFOS.phone}
             </a>
-            <span>•</span>
-            <span>Casablanca, Morocco</span>
+            <span className='flex items-center sm:hidden'>•</span>
+            <span className='flex items-center sm:w-full sm:justify-center sm:mt-1'>Casablanca, Morocco</span>
           </div>
         </motion.header>
 
         {/* Professional Summary */}
         <motion.section
-          className='mb-12'
+          className='mb-12 sm:mb-8'
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
         >
-          <h2 className='font-serif text-2xl sm:text-xl font-bold mb-4 border-b-2 border-primary-800 dark:border-primary-400 pb-2'>
+          <h2 className='font-serif text-2xl sm:text-xl font-bold mb-4 sm:mb-3 border-b-2 border-primary-800 dark:border-primary-400 pb-2'>
             Professional Summary
           </h2>
-          <p className='font-mono text-sm sm:text-xs leading-relaxed'>
+          <p className='font-mono text-sm sm:text-[13px] leading-relaxed'>
             Full-stack developer with 5+ years of experience specializing in building scalable web applications 
             using modern technologies. Proficient in React, TypeScript, Node.js, and Nest.js. Currently contributing 
             to platform development at IZI Safety while maintaining a strong focus on code quality, team collaboration, 
@@ -80,16 +80,16 @@ export default function ResumePage(): React.ReactElement {
 
         {/* Relevant Experience */}
         <motion.section
-          className='mb-12'
+          className='mb-12 sm:mb-8'
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
         >
-          <h2 className='font-serif text-2xl sm:text-xl font-bold mb-6 border-b-2 border-primary-800 dark:border-primary-400 pb-2'>
+          <h2 className='font-serif text-2xl sm:text-xl font-bold mb-6 sm:mb-4 border-b-2 border-primary-800 dark:border-primary-400 pb-2'>
             Relevant Experience
           </h2>
-          <div className='space-y-8'>
+          <div className='space-y-8 sm:space-y-6'>
             {EXPERIENCES.map((exp, index) => (
               <motion.div key={index} variants={fadeInUp}>
                 <div className='flex justify-between items-start mb-2 flex-wrap gap-2'>

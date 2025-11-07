@@ -43,11 +43,11 @@ export default function Hero(): React.ReactElement {
 
   return (
     <section 
-      className='min-h-screen flex items-center my-0 mx-auto px-4 py-24 sm:py-16'
+      className='min-h-screen flex items-center my-0 mx-auto px-4 py-24 sm:py-20'
       aria-label="Introduction"
     >
       <motion.div 
-        className='max-w-4xl'
+        className='max-w-4xl w-full'
         initial="hidden"
         animate="show"
         variants={sentence}
@@ -60,15 +60,15 @@ export default function Hero(): React.ReactElement {
         </motion.div>
 
         {/* Name */}
-        <motion.div className='mb-4 sm:mb-2' variants={word}>
-          <h1 className='font-serif font-semibold text-7xl sm:text-4xl leading-tight'>
+        <motion.div className='mb-4 sm:mb-3' variants={word}>
+          <h1 className='font-serif font-semibold text-7xl md:text-6xl sm:text-[clamp(2rem,8vw,3.5rem)] leading-[1.1]'>
             Hamza Zeghari.
           </h1>
         </motion.div>
 
         {/* Tagline */}
         <motion.div className='mb-8 sm:mb-6' variants={word}>
-          <h2 className='font-serif font-semibold text-7xl sm:text-4xl leading-tight opacity-60'>
+          <h2 className='font-serif font-semibold text-7xl md:text-6xl sm:text-[clamp(2rem,8vw,3.5rem)] leading-[1.1] opacity-60'>
             I build things for the web.
           </h2>
         </motion.div>
@@ -78,7 +78,7 @@ export default function Hero(): React.ReactElement {
           className='max-w-2xl'
           variants={word}
         >
-          <p className='font-mono text-lg sm:text-base leading-relaxed opacity-80'>
+          <p className='font-mono text-lg sm:text-[15px] leading-relaxed opacity-80'>
             I&apos;m a full-stack developer based in Casablanca, Morocco, specializing in building 
             exceptional web applications with modern technologies like React, TypeScript, Node.js, and Nest.js.
           </p>
@@ -94,7 +94,7 @@ export default function Hero(): React.ReactElement {
         >
           <a
             href='#about'
-            className='inline-block px-8 py-4 sm:px-6 sm:py-3 font-mono text-sm border-2 border-current rounded hover:bg-current hover:bg-opacity-10 transition-all'
+            className='inline-flex px-8 py-4 sm:px-6 sm:py-3 font-mono text-sm min-h-11 items-center justify-center border-2 border-current rounded hover:bg-current hover:bg-opacity-10 transition-all active:scale-95'
             aria-label="Learn more about me"
           >
             Learn More

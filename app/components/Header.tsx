@@ -45,7 +45,7 @@ export default function Header(): React.ReactElement {
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 px-8 sm:px-4 py-6 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-4 py-5 sm:py-4 transition-all duration-300 ${
         isScrolled 
           ? 'bg-(--background) bg-opacity-95 backdrop-blur-sm shadow-md' 
           : 'bg-transparent'
@@ -63,7 +63,7 @@ export default function Header(): React.ReactElement {
           <motion.div variants={word}>
             <Link 
               href='/' 
-              className='text-2xl sm:text-xl font-sans font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity'
+              className='text-2xl sm:text-lg font-sans font-semibold uppercase tracking-wide hover:opacity-70 transition-opacity min-h-11 flex items-center'
               aria-label="Home"
             >
               <span className='inline-block'>Hamza</span>
@@ -73,7 +73,7 @@ export default function Header(): React.ReactElement {
           </motion.div>
 
           {/* Navigation & Actions */}
-          <motion.div className='flex items-center gap-6 sm:gap-4' variants={word}>
+          <motion.div className='flex items-center gap-4 sm:gap-3' variants={word}>
             <NavBar />
             <ThemeButton />
           </motion.div>

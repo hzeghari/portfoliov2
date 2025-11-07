@@ -32,7 +32,7 @@ export default function NavBar(): React.ReactElement {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className='md:hidden p-2 hover:bg-current hover:bg-opacity-10 rounded transition-colors'
+        className='md:hidden p-2 hover:bg-current hover:bg-opacity-10 rounded transition-colors min-w-11 min-h-11 flex items-center justify-center'
         aria-expanded={isOpen}
         aria-label="Toggle navigation menu"
       >
@@ -69,7 +69,7 @@ export default function NavBar(): React.ReactElement {
               <li key={item.slug}>
                 <Link
                   href={item.slug}
-                  className='font-mono text-sm hover:text-primary-500 transition-colors flex items-center gap-2'
+                  className='font-mono text-sm hover:text-primary-500 transition-colors flex items-center gap-2 min-h-11 py-2'
                   onClick={() => setIsOpen(false)}
                 >
                   <span className='text-primary-600 dark:text-primary-400' aria-hidden="true">

@@ -26,11 +26,11 @@ export default function About(): React.ReactElement {
   return (
     <section 
       id="about" 
-      className='min-h-screen max-w-4xl my-0 mx-auto px-4 py-24'
+      className='min-h-screen max-w-4xl my-0 mx-auto px-4 py-24 sm:py-16'
       aria-labelledby="about-heading"
     >
       {/* Section Header */}
-      <div className='flex items-center relative mt-3 mx-0 mb-10 max-w-full'>
+      <div className='flex items-center relative mt-3 mx-0 mb-10 sm:mb-8 max-w-full'>
         <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-700 dark:text-primary-400' aria-hidden="true">
           01.
         </span>
@@ -41,16 +41,16 @@ export default function About(): React.ReactElement {
           About Me
         </h2>
         <span 
-          className='block relative w-72 sm:w-32 h-px ml-5 sm:ml-3 bg-current opacity-20' 
+          className='block relative w-72 sm:w-20 h-px ml-5 sm:ml-3 bg-current opacity-20' 
           aria-hidden="true"
         />
       </div>
 
       {/* Content Grid */}
-      <div className='grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 sm:gap-8'>
+      <div className='grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 sm:gap-10'>
         {/* Text Content */}
         <div className='space-y-4'>
-          <div className='font-mono text-sm sm:text-xs leading-relaxed'>
+          <div className='font-mono text-sm sm:text-[13px] leading-relaxed'>
             <p className='mb-4'>
               Hey! I&apos;m Hamza, a full-stack developer based in Casablanca,
               Morocco who enjoys building innovative solutions that live on the web. 
@@ -73,7 +73,7 @@ export default function About(): React.ReactElement {
             {skills.map((skill) => (
               <li 
                 key={skill.name}
-                className='relative mb-2 pl-5 text-sm sm:text-xs font-mono flex items-center'
+                className='relative mb-2 pl-5 text-sm sm:text-[13px] font-mono flex items-center min-h-8'
               >
                 <span className='absolute left-0 text-primary-600 dark:text-primary-400' aria-hidden="true">
                   ▹
@@ -86,7 +86,7 @@ export default function About(): React.ReactElement {
 
         {/* Profile Image */}
         <div className='relative max-w-xs md:max-w-full mx-auto md:mx-0'>
-          <div className='relative w-72 h-72 sm:w-56 sm:h-56 mx-auto group'>
+          <div className='relative w-72 h-72 md:w-64 md:h-64 sm:w-52 sm:h-52 mx-auto group'>
             {/* Animated gradient background */}
             <div 
               className='absolute inset-0 rounded-full bg-linear-to-br from-primary-700 via-primary-800 to-primary-900 dark:from-primary-400 dark:via-primary-500 dark:to-primary-700 opacity-15 dark:opacity-20 blur-2xl group-hover:opacity-25 dark:group-hover:opacity-30 transition-all duration-700 animate-pulse'
