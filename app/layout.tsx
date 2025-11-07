@@ -111,9 +111,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "your-google-verification-code", // Add when you get it from Google Search Console
-    // yandex: "your-yandex-verification-code",
-    // other: "your-other-verification-code",
+    google: "5m6zpB1wEGvl-NDbydhb0EYQN9MbaVN3960CMjRBJxM",
   },
   category: "technology",
 };
