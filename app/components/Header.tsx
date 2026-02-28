@@ -1,12 +1,18 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ThemeButton from './ThemeButton';
 import NavBar from './NavBar';
+import { useScrollSpy } from '../hooks/useScrollSpy';
+
+const SECTION_IDS = ['about', 'experience'];
 
 export default function Header(): React.ReactElement {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const activeSection = useScrollSpy(SECTION_IDS, 120);
 
   const sentence = {
     hidden: { opacity: 0 },
@@ -35,11 +41,28 @@ export default function Header(): React.ReactElement {
   };
 
   useEffect(() => {
+    const SCROLL_THRESHOLD = 10;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 20);
+
+      // Only toggle visibility after passing a small threshold to avoid flicker
+      const delta = currentY - lastScrollY.current;
+      if (Math.abs(delta) < SCROLL_THRESHOLD) return;
+
+      if (delta > 0 && currentY > 80) {
+        // Scrolling down past the hero area — hide
+        setIsVisible(false);
+      } else {
+        // Scrolling up — show
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -49,7 +72,7 @@ export default function Header(): React.ReactElement {
         isScrolled 
           ? 'bg-(--background)/95 backdrop-blur-md shadow-md dark:shadow-[0_1px_0_rgba(232,230,225,0.06)]' 
           : 'bg-transparent'
-      }`}
+      } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
       initial="hidden"
       animate="show"
       variants={sentence}
@@ -74,7 +97,7 @@ export default function Header(): React.ReactElement {
 
           {/* Navigation & Actions */}
           <motion.div className='flex items-center gap-4 sm:gap-3' variants={word}>
-            <NavBar />
+            <NavBar activeSection={activeSection} />
             <ThemeButton />
           </motion.div>
         </nav>

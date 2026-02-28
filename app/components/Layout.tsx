@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Hero from './Hero';
 import About from './About';
 import Experience from './Experience';
+import BackToTop from './BackToTop';
 
 export default function Layout(): React.ReactElement {
   return (
@@ -23,6 +24,9 @@ export default function Layout(): React.ReactElement {
 
       {/* Sticky Footer */}
       <Footer />
+
+      {/* Back to top */}
+      <BackToTop />
     </div>
   );
 }
