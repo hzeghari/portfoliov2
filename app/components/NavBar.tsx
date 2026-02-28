@@ -20,7 +20,7 @@ export default function NavBar(): React.ReactElement {
               href={item.slug}
               className='font-mono text-sm hover:text-primary-500 transition-colors flex items-center gap-2'
             >
-              <span className='text-primary-600 dark:text-primary-400' aria-hidden="true">
+              <span className='text-primary-600 dark:text-(--accent)' aria-hidden="true">
                 0{index + 1}.
               </span>
               {item.name}
@@ -63,7 +63,7 @@ export default function NavBar(): React.ReactElement {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='absolute top-full right-0 mt-2 bg-(--background) border-2 border-current rounded-lg shadow-lg p-4 min-w-[200px] md:hidden'>
+        <div className='absolute top-full right-0 mt-2 bg-(--background) border border-(--border-subtle) dark:bg-(--surface) dark:border-[rgba(232,230,225,0.1)] rounded-lg shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] p-4 min-w-[200px] md:hidden'>
           <ul className='flex flex-col gap-4 list-none'>
             {NAV.map((item, index) => (
               <li key={item.slug}>
@@ -72,7 +72,7 @@ export default function NavBar(): React.ReactElement {
                   className='font-mono text-sm hover:text-primary-500 transition-colors flex items-center gap-2 min-h-11 py-2'
                   onClick={() => setIsOpen(false)}
                 >
-                  <span className='text-primary-600 dark:text-primary-400' aria-hidden="true">
+                  <span className='text-primary-600 dark:text-(--accent)' aria-hidden="true">
                     0{index + 1}.
                   </span>
                   {item.name}

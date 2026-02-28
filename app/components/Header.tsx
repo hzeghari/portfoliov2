@@ -47,7 +47,7 @@ export default function Header(): React.ReactElement {
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-4 py-5 sm:py-4 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-(--background) bg-opacity-95 backdrop-blur-sm shadow-md' 
+          ? 'bg-(--background)/95 backdrop-blur-md shadow-md dark:shadow-[0_1px_0_rgba(232,230,225,0.06)]' 
           : 'bg-transparent'
       }`}
       initial="hidden"

@@ -46,7 +46,7 @@ export default function Experience(): React.ReactElement {
     >
       {/* Section Header */}
       <div className='flex items-center relative mt-3 mx-0 mb-16 sm:mb-10 max-w-full'>
-        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-800 dark:text-primary-400' aria-hidden="true">
+        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-800 dark:text-(--accent)' aria-hidden="true">
           02.
         </span>
         <h2
@@ -82,8 +82,8 @@ export default function Experience(): React.ReactElement {
                 min-h-11 flex items-center
                 ${
                   activeIndex === index
-                    ? 'border-primary-800 dark:border-primary-400 bg-primary-100 dark:bg-primary-900 bg-opacity-50 text-primary-900 dark:text-primary-300'
-                    : 'border-primary-300 dark:border-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900 hover:bg-opacity-30'
+                    ? 'border-primary-800 dark:border-(--accent) bg-primary-100 dark:bg-(--surface) bg-opacity-50 text-primary-900 dark:text-(--foreground)'
+                    : 'border-primary-300 dark:border-[rgba(232,230,225,0.08)] hover:bg-primary-50 dark:hover:bg-(--surface-hover) hover:bg-opacity-30'
                 }
               `}
               variants={itemVariants}
@@ -105,13 +105,13 @@ export default function Experience(): React.ReactElement {
             {/* Title */}
             <h3 className='font-sans text-2xl sm:text-lg font-semibold mb-2'>
               {EXPERIENCES[activeIndex].title}
-              <span className='text-primary-800 dark:text-primary-400 block sm:inline'>
+              <span className='text-primary-800 dark:text-(--accent) block sm:inline'>
                 {' '}@ {EXPERIENCES[activeIndex].company}
               </span>
             </h3>
 
             {/* Period */}
-            <p className='font-mono text-sm sm:text-xs text-primary-700 dark:text-primary-400 mb-6 sm:mb-4'>
+            <p className='font-mono text-sm sm:text-xs text-primary-700 dark:text-(--accent) mb-6 sm:mb-4'>
               {EXPERIENCES[activeIndex].period}
             </p>
 
@@ -125,7 +125,7 @@ export default function Experience(): React.ReactElement {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
                 >
-                  <span className='absolute left-0 text-primary-800 dark:text-primary-400 text-lg sm:text-base' aria-hidden="true">
+                  <span className='absolute left-0 text-primary-800 dark:text-(--accent) text-lg sm:text-base' aria-hidden="true">
                     ▹
                   </span>
                   {item}
@@ -136,14 +136,14 @@ export default function Experience(): React.ReactElement {
             {/* Technologies */}
             {EXPERIENCES[activeIndex].technologies && (
               <div>
-                <p className='font-mono text-xs font-semibold mb-3 text-primary-800 dark:text-primary-400'>
+                <p className='font-mono text-xs font-semibold mb-3 text-primary-800 dark:text-(--accent)'>
                   Technologies:
                 </p>
                 <div className='flex flex-wrap gap-2'>
                   {EXPERIENCES[activeIndex].technologies?.map((tech, idx) => (
                     <motion.span
                       key={tech}
-                      className='px-3 py-1.5 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full'
+                      className='px-3 py-1.5 text-xs font-mono bg-primary-200 dark:bg-(--surface) dark:border dark:border-[rgba(232,230,225,0.1)] text-primary-900 dark:text-(--accent) rounded-full'
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: idx * 0.05 }}
@@ -167,7 +167,7 @@ export default function Experience(): React.ReactElement {
                   href={EXPERIENCES[activeIndex].link}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='inline-flex items-center gap-2 font-mono text-sm text-primary-800 dark:text-primary-400 hover:underline'
+                  className='inline-flex items-center gap-2 font-mono text-sm text-primary-800 dark:text-(--accent) hover:underline'
                 >
                   View Project
                   <svg

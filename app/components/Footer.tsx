@@ -53,14 +53,14 @@ export default function Footer(): React.ReactElement {
                 target='_blank'
                 rel='noopener noreferrer'
                 aria-label={profile.name}
-                className='p-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors'
+                className='p-2 hover:text-primary-600 dark:hover:text-(--accent) transition-colors'
               >
                 {socialIcons[profile.name]}
               </a>
             </motion.li>
           ))}
         </ul>
-        <div className='w-[3px] h-28 bg-current opacity-20'></div>
+        <div className='w-[3px] h-28 bg-current opacity-20 dark:opacity-10'></div>
       </motion.div>
 
       {/* Right Side - Email */}
@@ -72,7 +72,7 @@ export default function Footer(): React.ReactElement {
       >
         <motion.a
           href={`mailto:${SOCIAL_INFOS.email}`}
-          className='font-mono text-sm tracking-wider hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:tracking-widest'
+          className='font-mono text-sm tracking-wider hover:text-primary-600 dark:hover:text-(--accent) transition-all duration-300 hover:tracking-widest'
           style={{
             writingMode: 'vertical-rl',
           }}
@@ -81,12 +81,12 @@ export default function Footer(): React.ReactElement {
         >
           {SOCIAL_INFOS.email}
         </motion.a>
-        <div className='w-[3px] h-28 bg-current opacity-20'></div>
+        <div className='w-[3px] h-28 bg-current opacity-20 dark:opacity-10'></div>
       </motion.div>
 
       {/* Mobile Footer */}
       <footer 
-        className='md:hidden sticky bottom-0 z-50 p-6 sm:p-5 mt-auto font-mono bg-(--background) bg-opacity-95 backdrop-blur-md border-t border-current border-opacity-10'
+        className='md:hidden sticky bottom-0 z-50 p-6 sm:p-5 mt-auto font-mono bg-(--background)/95 backdrop-blur-md border-t border-current border-opacity-10 dark:border-[rgba(232,230,225,0.06)] dark:shadow-[0_-1px_0_rgba(232,230,225,0.04)]'
         role="contentinfo"
       >
         <nav 
@@ -99,7 +99,7 @@ export default function Footer(): React.ReactElement {
               href={profile.slug}
               target='_blank'
               rel='noopener noreferrer'
-              className='hover:text-primary-600 dark:hover:text-primary-400 transition-colors'
+              className='hover:text-primary-600 dark:hover:text-(--accent) transition-colors'
               aria-label={profile.name}
             >
               {socialIcons[profile.name]}

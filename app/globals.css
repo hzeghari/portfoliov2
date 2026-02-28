@@ -97,12 +97,20 @@ body,
   /* Light mode (default) */
   --background: #CCCCC2; /* primary-500 */
   --foreground: #000000; /* black */
+  --surface: #BFBFB5;
+  --surface-hover: #B5B5A9;
+  --accent: #5F5F4F;
+  --border-subtle: rgba(0, 0, 0, 0.1);
 }
 
 html.dark {
-  /* Dark mode */
-  --background: #000000;
-  --foreground: #CCCCC2; /* primary-500 */
+  /* Dark mode — rich dark with warm undertone */
+  --background: #0C0C0F;
+  --foreground: #E8E6E1;
+  --surface: #161619;
+  --surface-hover: #1E1E22;
+  --accent: #D8D8D0;
+  --border-subtle: rgba(232, 230, 225, 0.08);
 }
 
 body {
@@ -110,6 +118,44 @@ body {
   color: var(--foreground);
   font-family: var(--font-family-sans);
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Selection colors */
+::selection {
+  background: rgba(0, 0, 0, 0.15);
+  color: inherit;
+}
+
+html.dark ::selection {
+  background: rgba(216, 216, 208, 0.2);
+  color: inherit;
+}
+
+/* Dark mode scrollbar */
+html.dark {
+  scrollbar-color: rgba(232, 230, 225, 0.15) transparent;
+}
+
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(232, 230, 225, 0.15);
+  border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(232, 230, 225, 0.25);
+}
+
+/* Dark mode focus ring */
+html.dark *:focus-visible {
+  outline-color: rgba(216, 216, 208, 0.5);
 }
 
 /* Article styles (from old config) */

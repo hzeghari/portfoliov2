@@ -31,7 +31,7 @@ export default function About(): React.ReactElement {
     >
       {/* Section Header */}
       <div className='flex items-center relative mt-3 mx-0 mb-10 sm:mb-8 max-w-full'>
-        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-700 dark:text-primary-400' aria-hidden="true">
+        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-700 dark:text-(--accent)' aria-hidden="true">
           01.
         </span>
         <h2 
@@ -75,7 +75,7 @@ export default function About(): React.ReactElement {
                 key={skill.name}
                 className='relative mb-2 pl-5 text-sm sm:text-[13px] font-mono flex items-center min-h-8'
               >
-                <span className='absolute left-0 text-primary-600 dark:text-primary-400' aria-hidden="true">
+                <span className='absolute left-0 text-primary-600 dark:text-(--accent)' aria-hidden="true">
                   ▹
                 </span>
                 {skill.name}
@@ -89,42 +89,42 @@ export default function About(): React.ReactElement {
           <div className='relative w-72 h-72 md:w-64 md:h-64 sm:w-52 sm:h-52 mx-auto group'>
             {/* Animated gradient background */}
             <div 
-              className='absolute inset-0 rounded-full bg-linear-to-br from-primary-700 via-primary-800 to-primary-900 dark:from-primary-400 dark:via-primary-500 dark:to-primary-700 opacity-15 dark:opacity-20 blur-2xl group-hover:opacity-25 dark:group-hover:opacity-30 transition-all duration-700 animate-pulse'
+              className='absolute inset-0 rounded-full bg-linear-to-br from-primary-700 via-primary-800 to-primary-900 dark:from-(--accent) dark:via-primary-600 dark:to-primary-800 opacity-15 dark:opacity-10 blur-2xl group-hover:opacity-25 dark:group-hover:opacity-20 transition-all duration-700 animate-pulse'
               aria-hidden="true"
             />
             
             {/* Rotating border rings */}
             <div 
-              className='absolute inset-0 rounded-full border-2 border-primary-800 dark:border-primary-500 opacity-20 dark:opacity-30'
+              className='absolute inset-0 rounded-full border-2 border-primary-800 dark:border-(--accent) opacity-20 dark:opacity-15'
               style={{ animation: 'spin 20s linear infinite' }}
               aria-hidden="true"
             />
             <div 
-              className='absolute inset-4 rounded-full border border-primary-700 dark:border-primary-400 opacity-15 dark:opacity-20'
+              className='absolute inset-4 rounded-full border border-primary-700 dark:border-(--accent) opacity-15 dark:opacity-10'
               style={{ animation: 'spin 15s linear infinite reverse' }}
               aria-hidden="true"
             />
             
             {/* Decorative corner accents */}
             <div className='absolute -top-2 -right-2 w-16 h-16 sm:w-12 sm:h-12' aria-hidden="true">
-              <div className='w-full h-full border-t-2 border-r-2 border-black dark:border-primary-400 rounded-tr-3xl opacity-40 dark:opacity-60' />
+              <div className='w-full h-full border-t-2 border-r-2 border-black dark:border-(--accent) rounded-tr-3xl opacity-40 dark:opacity-30' />
             </div>
             <div className='absolute -bottom-2 -left-2 w-16 h-16 sm:w-12 sm:h-12' aria-hidden="true">
-              <div className='w-full h-full border-b-2 border-l-2 border-black dark:border-primary-400 rounded-bl-3xl opacity-40 dark:opacity-60' />
+              <div className='w-full h-full border-b-2 border-l-2 border-black dark:border-(--accent) rounded-bl-3xl opacity-40 dark:opacity-30' />
             </div>
             
             {/* Main image container with glassmorphism effect */}
-            <div className='absolute inset-8 sm:inset-6 rounded-full overflow-hidden shadow-2xl ring-4 ring-black dark:ring-primary-500 ring-opacity-10 dark:ring-opacity-20 group-hover:ring-opacity-20 dark:group-hover:ring-opacity-40 transition-all duration-500'>
+            <div className='absolute inset-8 sm:inset-6 rounded-full overflow-hidden shadow-2xl ring-4 ring-black dark:ring-(--accent) ring-opacity-10 dark:ring-opacity-10 group-hover:ring-opacity-20 dark:group-hover:ring-opacity-20 transition-all duration-500'>
               {/* Gradient overlay border */}
               <div 
-                className='absolute inset-0 rounded-full bg-linear-to-br from-primary-800 to-black dark:from-primary-300 dark:to-primary-700 p-[3px] group-hover:p-1 transition-all'
+                className='absolute inset-0 rounded-full bg-linear-to-br from-primary-800 to-black dark:from-(--accent) dark:to-primary-800 p-[3px] group-hover:p-1 transition-all'
                 aria-hidden="true"
               >
                 <div className='w-full h-full rounded-full bg-(--background)' />
               </div>
               
               {/* Image wrapper */}
-              <div className='relative w-full h-full rounded-full overflow-hidden bg-linear-to-br from-white to-primary-100 dark:from-primary-900 dark:to-primary-800'>
+              <div className='relative w-full h-full rounded-full overflow-hidden bg-linear-to-br from-white to-primary-100 dark:from-[#1a1a1e] dark:to-[#111114]'>
                 <Image
                   src='/images/01.png'
                   alt='Hamza Zeghari - Software Engineer based in Casablanca, Morocco'
@@ -135,7 +135,7 @@ export default function About(): React.ReactElement {
                 />
                 
                 {/* Color overlay with mix-blend */}
-                <div className='absolute inset-0 bg-linear-to-br from-black via-transparent to-primary-900 dark:from-primary-500 dark:via-transparent dark:to-primary-700 mix-blend-soft-light opacity-20 dark:opacity-30 group-hover:opacity-5 dark:group-hover:opacity-10 transition-opacity duration-700' />
+                <div className='absolute inset-0 bg-linear-to-br from-black via-transparent to-primary-900 dark:from-(--accent) dark:via-transparent dark:to-primary-800 mix-blend-soft-light opacity-20 dark:opacity-15 group-hover:opacity-5 dark:group-hover:opacity-5 transition-opacity duration-700' />
                 
                 {/* Shine effect on hover */}
                 <div className='absolute inset-0 bg-linear-to-tr from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 dark:group-hover:opacity-20 transition-opacity duration-700 -translate-x-full group-hover:translate-x-full transform' 
@@ -146,17 +146,17 @@ export default function About(): React.ReactElement {
             
             {/* Floating particles effect */}
             <div 
-              className='absolute top-1/4 right-0 w-2 h-2 rounded-full bg-primary-900 dark:bg-primary-500 opacity-50 dark:opacity-60' 
+              className='absolute top-1/4 right-0 w-2 h-2 rounded-full bg-primary-900 dark:bg-(--accent) opacity-50 dark:opacity-30' 
               style={{ animation: 'float 3s ease-in-out infinite' }}
               aria-hidden="true" 
             />
             <div 
-              className='absolute bottom-1/4 left-0 w-3 h-3 rounded-full bg-primary-800 dark:bg-primary-400 opacity-35 dark:opacity-40' 
+              className='absolute bottom-1/4 left-0 w-3 h-3 rounded-full bg-primary-800 dark:bg-(--accent) opacity-35 dark:opacity-20' 
               style={{ animation: 'float 4s ease-in-out infinite 0.5s' }}
               aria-hidden="true" 
             />
             <div 
-              className='absolute top-1/3 left-1/4 w-1.5 h-1.5 rounded-full bg-black dark:bg-primary-600 opacity-40 dark:opacity-50' 
+              className='absolute top-1/3 left-1/4 w-1.5 h-1.5 rounded-full bg-black dark:bg-(--accent) opacity-40 dark:opacity-25' 
               style={{ animation: 'float 5s ease-in-out infinite 1s' }}
               aria-hidden="true" 
             />

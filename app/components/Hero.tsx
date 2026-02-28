@@ -54,7 +54,7 @@ export default function Hero(): React.ReactElement {
       >
         {/* Greeting */}
         <motion.div className='mb-6 sm:mb-4' variants={word}>
-          <p className='font-mono text-base sm:text-sm text-primary-800 dark:text-primary-400'>
+          <p className='font-mono text-base sm:text-sm text-primary-800 dark:text-(--accent)'>
             Hi, my name is
           </p>
         </motion.div>
