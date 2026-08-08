@@ -1,89 +1,78 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Analytics from "./components/Analytics";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from 'next';
+import ReactDOM from 'react-dom';
+import './globals.css';
+import Analytics from './components/Analytics';
+import JsonLd from './components/JsonLd';
+import MotionProvider from './components/MotionProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SOCIAL_INFOS } from './constants/infos';
+import { SITE, absoluteUrl } from './constants/site';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+/** Only the faces used above the fold; the rest load on demand from globals.css. */
+const PRELOADED_FONTS = [
+  '/fonts/signifier-light.woff2',
+  '/fonts/mabry-regular-pro.woff2',
+  '/fonts/mabry-mono-medium-pro.woff2',
+];
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hzeghari.dev"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Hamza Zeghari - Full Stack Developer | React, TypeScript, Node.js",
-    template: "%s | Hamza Zeghari",
+    default: SITE.title,
+    template: `%s | ${SOCIAL_INFOS.fullname}`,
   },
-  description: "Full-stack developer based in Casablanca, Morocco. Specializing in building scalable web applications with React, TypeScript, Node.js, and Nest.js. Currently working at IZI Safety.",
+  description: SITE.description,
   keywords: [
-    "Hamza Zeghari",
-    "hzeghari",
-    "Full Stack Developer",
-    "Software Engineer",
-    "Web Developer",
-    "React Developer",
-    "TypeScript Developer",
-    "Node.js Developer",
-    "Nest.js Developer",
-    "Frontend Developer",
-    "Backend Developer",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Nest.js",
-    "MongoDB",
-    "SQL",
-    "Tailwind CSS",
-    "Next.js",
-    "Express.js",
-    "Docker",
-    "IZI Safety",
-    "Casablanca",
-    "Morocco",
-    "Freelance Developer",
-    "Web Applications",
-    "API Development",
+    SOCIAL_INFOS.fullname,
+    'hzeghari',
+    'Full Stack Developer',
+    'Software Engineer',
+    'Web Developer',
+    'React Developer',
+    'TypeScript Developer',
+    'Node.js Developer',
+    'Nest.js Developer',
+    'Frontend Developer',
+    'Backend Developer',
+    'React',
+    'TypeScript',
+    'Node.js',
+    'Nest.js',
+    'MongoDB',
+    'SQL',
+    'Tailwind CSS',
+    'Next.js',
+    'Express.js',
+    'Docker',
+    'IZI Safety',
+    SITE.locality,
+    SITE.countryName,
+    'Freelance Developer',
+    'Web Applications',
+    'API Development',
   ],
-  authors: [
-    { name: "Hamza Zeghari", url: "https://hzeghari.dev" },
-  ],
-  creator: "Hamza Zeghari",
-  publisher: "Hamza Zeghari",
+  authors: [{ name: SOCIAL_INFOS.fullname, url: SITE.url }],
+  creator: SOCIAL_INFOS.fullname,
+  publisher: SOCIAL_INFOS.fullname,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://hzeghari.dev",
-    title: "Hamza Zeghari - Full Stack Developer",
-    description: "Full-stack developer specializing in React, TypeScript, Node.js, and Nest.js. Building scalable web applications in Casablanca, Morocco.",
-    siteName: "Hamza Zeghari - Developer Portfolio",
-    images: [
-      {
-        url: "/images/01.png",
-        width: 1200,
-        height: 630,
-        alt: "Hamza Zeghari - Full Stack Developer Portfolio",
-        type: "image/png",
-      },
-    ],
+    type: 'website',
+    locale: SITE.locale,
+    url: absoluteUrl('/'),
+    title: SITE.shortTitle,
+    description: SITE.shortDescription,
+    siteName: SITE.name,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Hamza Zeghari - Full Stack Developer",
-    description: "Full-stack developer specializing in React, TypeScript, Node.js, and Nest.js. Building scalable web applications.",
-    creator: "@hzeghari",
-    site: "@hzeghari",
-    images: ["/images/01.png"],
+    card: 'summary_large_image',
+    title: SITE.shortTitle,
+    description: SITE.shortDescription,
+    creator: SITE.twitterHandle,
+    site: SITE.twitterHandle,
   },
   robots: {
     index: true,
@@ -92,30 +81,29 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   alternates: {
-    canonical: "https://hzeghari.dev",
+    canonical: absoluteUrl('/'),
   },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
-  manifest: "/site.webmanifest",
   verification: {
-    google: "5m6zpB1wEGvl-NDbydhb0EYQN9MbaVN3960CMjRBJxM",
+    google: '5m6zpB1wEGvl-NDbydhb0EYQN9MbaVN3960CMjRBJxM',
   },
-  category: "technology",
+  category: 'technology',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: SITE.themeColorLight },
+    { media: '(prefers-color-scheme: dark)', color: SITE.themeColorDark },
+  ],
 };
 
 export default function RootLayout({
@@ -123,10 +111,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The faces are declared in globals.css, so the browser would otherwise only
+  // discover them after parsing the stylesheet and laying out the page.
+  PRELOADED_FONTS.forEach((href) =>
+    ReactDOM.preload(href, {
+      as: 'font',
+      type: 'font/woff2',
+      crossOrigin: 'anonymous',
+    }),
+  );
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+        {/* Applies the stored theme before first paint so dark mode never flashes. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -143,10 +141,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded focus:border-2 focus:border-current focus:bg-(--background) focus:px-4 focus:py-3 focus:font-mono focus:text-sm"
+        >
+          Skip to main content
+        </a>
+        <MotionProvider>{children}</MotionProvider>
+        <JsonLd />
         <Analytics />
         <SpeedInsights />
       </body>

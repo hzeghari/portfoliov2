@@ -1,33 +1,25 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { absoluteUrl } from './constants/site';
 
+/**
+ * Only canonical page URLs belong here. On-page anchors such as `/#about` are
+ * not separate documents, so listing them just reports duplicates of `/`.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://hzeghari.dev';
-  const currentDate = new Date();
+  const lastModified = new Date();
 
   return [
     {
-      url: baseUrl,
-      lastModified: currentDate,
+      url: absoluteUrl('/'),
+      lastModified,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/resume`,
-      lastModified: currentDate,
+      url: absoluteUrl('/resume'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#about`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/#experience`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.9,
     },
   ];
 }

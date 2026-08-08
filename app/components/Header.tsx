@@ -1,18 +1,20 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ThemeButton from './ThemeButton';
 import NavBar from './NavBar';
 import { useScrollSpy } from '../hooks/useScrollSpy';
+import { useScrollEffect } from '../hooks/useScrollEffect';
+import { NAV_SECTION_IDS } from '../constants/nav';
 
-const SECTION_IDS = ['about', 'experience'];
+const SCROLL_THRESHOLD = 10;
 
 export default function Header(): React.ReactElement {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const activeSection = useScrollSpy(SECTION_IDS, 120);
+  const activeSection = useScrollSpy(NAV_SECTION_IDS, 120);
 
   const sentence = {
     hidden: { opacity: 0 },
@@ -40,31 +42,24 @@ export default function Header(): React.ReactElement {
     },
   };
 
-  useEffect(() => {
-    const SCROLL_THRESHOLD = 10;
+  useScrollEffect(() => {
+    const currentY = window.scrollY;
+    setIsScrolled(currentY > 20);
 
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 20);
+    // Only toggle visibility after passing a small threshold to avoid flicker
+    const delta = currentY - lastScrollY.current;
+    if (Math.abs(delta) < SCROLL_THRESHOLD) return;
 
-      // Only toggle visibility after passing a small threshold to avoid flicker
-      const delta = currentY - lastScrollY.current;
-      if (Math.abs(delta) < SCROLL_THRESHOLD) return;
+    if (delta > 0 && currentY > 80) {
+      // Scrolling down past the hero area — hide
+      setIsVisible(false);
+    } else {
+      // Scrolling up — show
+      setIsVisible(true);
+    }
 
-      if (delta > 0 && currentY > 80) {
-        // Scrolling down past the hero area — hide
-        setIsVisible(false);
-      } else {
-        // Scrolling up — show
-        setIsVisible(true);
-      }
-
-      lastScrollY.current = currentY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    lastScrollY.current = currentY;
+  });
 
   return (
     <motion.header 

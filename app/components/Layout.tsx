@@ -1,10 +1,11 @@
-"use client";
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
 import About from './About';
 import Experience from './Experience';
+import Projects from './Projects';
+import Contact from './Contact';
 import BackToTop from './BackToTop';
 
 export default function Layout(): React.ReactElement {
@@ -14,11 +15,13 @@ export default function Layout(): React.ReactElement {
       <Header />
       
       {/* Main Content - Add top padding to account for fixed header */}
-      <main className='flex-1 flex flex-col pt-24 sm:pt-20'>
+      <main id='main-content' className='flex-1 flex flex-col pt-24 sm:pt-20'>
         <div className='px-8 sm:px-4 max-w-7xl mx-auto w-full'>
           <Hero />
           <About />
           <Experience />
+          <Projects />
+          <Contact />
         </div>
       </main>
 

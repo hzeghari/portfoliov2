@@ -1,10 +1,48 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { EXPERIENCES } from '../constants/infos';
+import SectionHeading from './SectionHeading';
+
+const tabId = (index: number) => `experience-tab-${index}`;
+const panelId = (index: number) => `experience-panel-${index}`;
 
 export default function Experience(): React.ReactElement {
   const [activeIndex, setActiveIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  /**
+   * Tabs follow the APG pattern: one tab stop for the whole list, with arrow
+   * keys moving between tabs. Both axes are handled because the list is
+   * vertical on desktop and horizontal on mobile.
+   */
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const lastIndex = EXPERIENCES.length - 1;
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        nextIndex = activeIndex === lastIndex ? 0 : activeIndex + 1;
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        nextIndex = activeIndex === 0 ? lastIndex : activeIndex - 1;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = lastIndex;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    setActiveIndex(nextIndex);
+    tabRefs.current[nextIndex]?.focus();
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,22 +82,13 @@ export default function Experience(): React.ReactElement {
       className='min-h-screen max-w-4xl my-0 mx-auto px-4 py-24 sm:py-16'
       aria-labelledby="experience-heading"
     >
-      {/* Section Header */}
-      <div className='flex items-center relative mt-3 mx-0 mb-16 sm:mb-10 max-w-full'>
-        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-800 dark:text-(--accent)' aria-hidden="true">
-          02.
-        </span>
-        <h2
-          id="experience-heading"
-          className='font-serif text-3xl sm:text-2xl whitespace-nowrap'
-        >
-          Where I&apos;ve Worked
-        </h2>
-        <span
-          className='block relative w-72 sm:w-20 h-px ml-5 sm:ml-3 bg-current opacity-20'
-          aria-hidden="true"
-        />
-      </div>
+      <SectionHeading
+        id="experience-heading"
+        number="02"
+        className='mb-16 sm:mb-10'
+      >
+        Where I&apos;ve Worked
+      </SectionHeading>
 
       {/* Experience Content */}
       <div className='flex flex-col md:flex-row gap-8 sm:gap-6'>
@@ -71,11 +100,23 @@ export default function Experience(): React.ReactElement {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
+          role="tablist"
+          aria-label="Companies"
         >
           {EXPERIENCES.map((exp, index) => (
             <motion.button
               key={index}
+              ref={(node) => {
+                tabRefs.current[index] = node;
+              }}
+              type="button"
+              role="tab"
+              id={tabId(index)}
+              aria-selected={activeIndex === index}
+              aria-controls={panelId(index)}
+              tabIndex={activeIndex === index ? 0 : -1}
               onClick={() => setActiveIndex(index)}
+              onKeyDown={handleTabKeyDown}
               className={`
                 relative px-6 py-3 sm:px-5 sm:py-3 text-left font-mono text-sm sm:text-xs whitespace-nowrap md:whitespace-normal
                 transition-all duration-300 border-l-2 md:border-l-2 border-b-2 md:border-b-0
@@ -100,6 +141,10 @@ export default function Experience(): React.ReactElement {
           initial="hidden"
           animate="show"
           variants={contentVariants}
+          role="tabpanel"
+          id={panelId(activeIndex)}
+          aria-labelledby={tabId(activeIndex)}
+          tabIndex={0}
         >
           <div>
             {/* Title */}

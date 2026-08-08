@@ -1,26 +1,7 @@
-"use client";
 import Image from 'next/image';
 import React from 'react';
-
-interface Skill {
-  name: string;
-  category?: string;
-}
-
-const skills: Skill[] = [
-  { name: 'JavaScript (ES6+)' },
-  { name: 'TypeScript' },
-  { name: 'React.js' },
-  { name: 'Node.js' },
-  { name: 'Nest.js' },
-  { name: 'Express.js' },
-  { name: 'MongoDB' },
-  { name: 'SQL' },
-  { name: 'Redux' },
-  { name: 'React Query' },
-  { name: 'Tailwind CSS' },
-  { name: 'Docker' },
-];
+import { FEATURED_SKILLS } from '../constants/skills';
+import SectionHeading from './SectionHeading';
 
 export default function About(): React.ReactElement {
   return (
@@ -29,22 +10,9 @@ export default function About(): React.ReactElement {
       className='min-h-screen max-w-4xl my-0 mx-auto px-4 py-24 sm:py-16'
       aria-labelledby="about-heading"
     >
-      {/* Section Header */}
-      <div className='flex items-center relative mt-3 mx-0 mb-10 sm:mb-8 max-w-full'>
-        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-700 dark:text-(--accent)' aria-hidden="true">
-          01.
-        </span>
-        <h2 
-          id="about-heading" 
-          className='font-serif text-3xl sm:text-2xl whitespace-nowrap'
-        >
-          About Me
-        </h2>
-        <span 
-          className='block relative w-72 sm:w-20 h-px ml-5 sm:ml-3 bg-current opacity-20' 
-          aria-hidden="true"
-        />
-      </div>
+      <SectionHeading id="about-heading" number="01">
+        About Me
+      </SectionHeading>
 
       {/* Content Grid */}
       <div className='grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 sm:gap-10'>
@@ -70,15 +38,15 @@ export default function About(): React.ReactElement {
 
           {/* Skills List */}
           <ul className='grid grid-cols-2 gap-2 mt-5' role="list">
-            {skills.map((skill) => (
+            {FEATURED_SKILLS.map((skill) => (
               <li 
-                key={skill.name}
+                key={skill}
                 className='relative mb-2 pl-5 text-sm sm:text-[13px] font-mono flex items-center min-h-8'
               >
                 <span className='absolute left-0 text-primary-600 dark:text-(--accent)' aria-hidden="true">
                   ▹
                 </span>
-                {skill.name}
+                {skill}
               </li>
             ))}
           </ul>

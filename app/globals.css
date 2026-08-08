@@ -88,8 +88,7 @@
 
 /* Global styles and theme variables */
 html,
-body,
-#__next {
+body {
   height: 100%;
 }
 
@@ -205,9 +204,28 @@ article li {
   }
 }
 
-/* Smooth scroll behavior */
+/* Smooth scroll behavior. The padding keeps anchor targets clear of the fixed
+   header, which would otherwise cover the top of each section. */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Respect the OS "reduce motion" setting (WCAG 2.3.3). Framer Motion is handled
+   separately via <MotionConfig reducedMotion="user"> in the root layout. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Mobile-specific improvements */
