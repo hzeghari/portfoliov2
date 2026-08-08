@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SOCIAL_INFOS, EXPERIENCES, EDUCATION, CERTIFICATIONS } from '../constants/infos';
+import { SKILL_CATEGORIES } from '../constants/skills';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -25,14 +26,6 @@ const staggerContainer = {
 };
 
 export default function ResumePage(): React.ReactElement {
-  const skills = {
-    programming: ['JavaScript (ES6+)', 'TypeScript', 'HTML', 'CSS/Sass', 'GraphQL', 'Python', 'PHP'],
-    frameworks: ['React', 'Node.js', 'Express.js', 'Nest.js', 'jQuery', 'Angular', 'Tailwind CSS', 'Laravel'],
-    tools: ['Git', 'Docker', 'Webpack', 'Postman', 'Contentful', 'Netlify', 'Heroku', 'WordPress', 'Firebase', 'Redis'],
-    design: ['Figma'],
-    databases: ['MongoDB', 'SQL', 'MySQL'],
-  };
-
   return (
     <div className='min-h-screen py-24 sm:py-16 px-8 sm:px-4 print:py-0 print:px-0'>
       <div className='max-w-5xl mx-auto print:max-w-full'>
@@ -220,85 +213,27 @@ export default function ResumePage(): React.ReactElement {
             Technical Skills
           </h2>
           <div className='space-y-4 print:space-y-1'>
-            <motion.div variants={fadeInUp} className='print:break-inside-avoid'>
-              <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
-                Programming Languages
-              </h3>
-              <div className='flex flex-wrap gap-2 print:gap-1'>
-                {skills.programming.map((skill) => (
-                  <span
-                    key={skill}
-                    className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className='print:break-inside-avoid'>
-              <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
-                Frameworks & Libraries
-              </h3>
-              <div className='flex flex-wrap gap-2 print:gap-1'>
-                {skills.frameworks.map((skill) => (
-                  <span
-                    key={skill}
-                    className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className='print:break-inside-avoid'>
-              <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
-                Databases
-              </h3>
-              <div className='flex flex-wrap gap-2 print:gap-1'>
-                {skills.databases.map((skill) => (
-                  <span
-                    key={skill}
-                    className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className='print:break-inside-avoid'>
-              <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
-                Tools & Platforms
-              </h3>
-              <div className='flex flex-wrap gap-2 print:gap-1'>
-                {skills.tools.map((skill) => (
-                  <span
-                    key={skill}
-                    className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeInUp} className='print:break-inside-avoid'>
-              <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
-                Design Tools
-              </h3>
-              <div className='flex flex-wrap gap-2 print:gap-1'>
-                {skills.design.map((skill) => (
-                  <span
-                    key={skill}
-                    className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+            {SKILL_CATEGORIES.map((category) => (
+              <motion.div
+                key={category.label}
+                variants={fadeInUp}
+                className='print:break-inside-avoid'
+              >
+                <h3 className='font-sans text-sm font-semibold mb-2 text-primary-800 dark:text-primary-400 print:mb-1 print:text-black'>
+                  {category.label}
+                </h3>
+                <div className='flex flex-wrap gap-2 print:gap-1'>
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className='px-3 py-1 text-xs font-mono bg-primary-200 dark:bg-primary-800 text-primary-900 dark:text-primary-200 rounded-full print:bg-gray-100 print:text-black print:border print:border-gray-300 print:rounded'
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 

@@ -1,26 +1,6 @@
-"use client";
 import Image from 'next/image';
 import React from 'react';
-
-interface Skill {
-  name: string;
-  category?: string;
-}
-
-const skills: Skill[] = [
-  { name: 'JavaScript (ES6+)' },
-  { name: 'TypeScript' },
-  { name: 'React.js' },
-  { name: 'Node.js' },
-  { name: 'Nest.js' },
-  { name: 'Express.js' },
-  { name: 'MongoDB' },
-  { name: 'SQL' },
-  { name: 'Redux' },
-  { name: 'React Query' },
-  { name: 'Tailwind CSS' },
-  { name: 'Docker' },
-];
+import { FEATURED_SKILLS } from '../constants/skills';
 
 export default function About(): React.ReactElement {
   return (
@@ -70,15 +50,15 @@ export default function About(): React.ReactElement {
 
           {/* Skills List */}
           <ul className='grid grid-cols-2 gap-2 mt-5' role="list">
-            {skills.map((skill) => (
+            {FEATURED_SKILLS.map((skill) => (
               <li 
-                key={skill.name}
+                key={skill}
                 className='relative mb-2 pl-5 text-sm sm:text-[13px] font-mono flex items-center min-h-8'
               >
                 <span className='absolute left-0 text-primary-600 dark:text-(--accent)' aria-hidden="true">
                   ▹
                 </span>
-                {skill.name}
+                {skill}
               </li>
             ))}
           </ul>
