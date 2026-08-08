@@ -1,10 +1,47 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { EXPERIENCES } from '../constants/infos';
 
+const tabId = (index: number) => `experience-tab-${index}`;
+const panelId = (index: number) => `experience-panel-${index}`;
+
 export default function Experience(): React.ReactElement {
   const [activeIndex, setActiveIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  /**
+   * Tabs follow the APG pattern: one tab stop for the whole list, with arrow
+   * keys moving between tabs. Both axes are handled because the list is
+   * vertical on desktop and horizontal on mobile.
+   */
+  const handleTabKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const lastIndex = EXPERIENCES.length - 1;
+    let nextIndex: number | null = null;
+
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        nextIndex = activeIndex === lastIndex ? 0 : activeIndex + 1;
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        nextIndex = activeIndex === 0 ? lastIndex : activeIndex - 1;
+        break;
+      case 'Home':
+        nextIndex = 0;
+        break;
+      case 'End':
+        nextIndex = lastIndex;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    setActiveIndex(nextIndex);
+    tabRefs.current[nextIndex]?.focus();
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,11 +108,23 @@ export default function Experience(): React.ReactElement {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
+          role="tablist"
+          aria-label="Companies"
         >
           {EXPERIENCES.map((exp, index) => (
             <motion.button
               key={index}
+              ref={(node) => {
+                tabRefs.current[index] = node;
+              }}
+              type="button"
+              role="tab"
+              id={tabId(index)}
+              aria-selected={activeIndex === index}
+              aria-controls={panelId(index)}
+              tabIndex={activeIndex === index ? 0 : -1}
               onClick={() => setActiveIndex(index)}
+              onKeyDown={handleTabKeyDown}
               className={`
                 relative px-6 py-3 sm:px-5 sm:py-3 text-left font-mono text-sm sm:text-xs whitespace-nowrap md:whitespace-normal
                 transition-all duration-300 border-l-2 md:border-l-2 border-b-2 md:border-b-0
@@ -100,6 +149,10 @@ export default function Experience(): React.ReactElement {
           initial="hidden"
           animate="show"
           variants={contentVariants}
+          role="tabpanel"
+          id={panelId(activeIndex)}
+          aria-labelledby={tabId(activeIndex)}
+          tabIndex={0}
         >
           <div>
             {/* Title */}

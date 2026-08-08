@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './globals.css';
 import Analytics from './components/Analytics';
 import JsonLd from './components/JsonLd';
+import MotionProvider from './components/MotionProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SOCIAL_INFOS } from './constants/infos';
 import { SITE, absoluteUrl } from './constants/site';
@@ -147,7 +148,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
         <JsonLd />
         <Analytics />
         <SpeedInsights />

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NAV } from '../constants/nav';
 
 interface NavBarProps {
@@ -20,8 +21,32 @@ export default function NavBar({ activeSection = '' }: NavBarProps): React.React
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
-  const closeMenu = useCallback(() => setIsOpen(false), []);
+  /**
+   * A link is current either because its route is open (e.g. /resume) or,
+   * for same-page anchors, because scroll-spy says its section is in view.
+   */
+  const currentStateFor = (
+    slug: string,
+  ): { isActive: boolean; ariaCurrent: 'page' | 'location' | undefined } => {
+    const sectionId = sectionIdFromSlug(slug);
+
+    if (sectionId === '') {
+      const isActive = pathname === slug;
+      return { isActive, ariaCurrent: isActive ? 'page' : undefined };
+    }
+
+    const isActive = pathname === '/' && activeSection === sectionId;
+    return { isActive, ariaCurrent: isActive ? 'location' : undefined };
+  };
+
+  // Dismissing the menu returns focus to the toggle so keyboard users are not
+  // dropped back at the top of the document.
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    buttonRef.current?.focus();
+  }, []);
 
   const toggleMenu = (): void => {
     setIsOpen((prev) => !prev);
@@ -39,6 +64,12 @@ export default function NavBar({ activeSection = '' }: NavBarProps): React.React
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, closeMenu]);
 
+  // Move focus into the panel when it opens so the next Tab lands on a link.
+  useEffect(() => {
+    if (!isOpen) return;
+    menuRef.current?.querySelector<HTMLAnchorElement>('a')?.focus();
+  }, [isOpen]);
+
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
@@ -54,13 +85,13 @@ export default function NavBar({ activeSection = '' }: NavBarProps): React.React
       {/* Desktop Navigation */}
       <ul className='hidden md:flex justify-end gap-8 list-none'>
         {NAV.map((item, index) => {
-          const sectionId = sectionIdFromSlug(item.slug);
-          const isActive = sectionId !== '' && activeSection === sectionId;
+          const { isActive, ariaCurrent } = currentStateFor(item.slug);
 
           return (
             <li key={item.slug} className='relative'>
               <Link
                 href={item.slug}
+                aria-current={ariaCurrent}
                 className={`font-mono text-sm transition-colors flex items-center gap-2 ${
                   isActive
                     ? 'text-(--foreground)'
@@ -138,13 +169,13 @@ export default function NavBar({ activeSection = '' }: NavBarProps): React.React
           >
             <ul className='flex flex-col gap-4 list-none'>
               {NAV.map((item, index) => {
-                const sectionId = sectionIdFromSlug(item.slug);
-                const isActive = sectionId !== '' && activeSection === sectionId;
+                const { isActive, ariaCurrent } = currentStateFor(item.slug);
 
                 return (
                   <li key={item.slug}>
                     <Link
                       href={item.slug}
+                      aria-current={ariaCurrent}
                       className={`font-mono text-sm transition-colors flex items-center gap-2 min-h-11 py-2 ${
                         isActive
                           ? 'text-(--foreground)'
