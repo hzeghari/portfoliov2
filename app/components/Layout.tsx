@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -14,7 +13,7 @@ export default function Layout(): React.ReactElement {
       <Header />
       
       {/* Main Content - Add top padding to account for fixed header */}
-      <main className='flex-1 flex flex-col pt-24 sm:pt-20'>
+      <main id='main-content' className='flex-1 flex flex-col pt-24 sm:pt-20'>
         <div className='px-8 sm:px-4 max-w-7xl mx-auto w-full'>
           <Hero />
           <About />
