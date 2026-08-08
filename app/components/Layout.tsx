@@ -4,6 +4,8 @@ import Footer from './Footer';
 import Hero from './Hero';
 import About from './About';
 import Experience from './Experience';
+import Projects from './Projects';
+import Contact from './Contact';
 import BackToTop from './BackToTop';
 
 export default function Layout(): React.ReactElement {
@@ -18,6 +20,8 @@ export default function Layout(): React.ReactElement {
           <Hero />
           <About />
           <Experience />
+          <Projects />
+          <Contact />
         </div>
       </main>
 

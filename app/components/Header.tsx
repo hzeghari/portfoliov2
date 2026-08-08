@@ -6,16 +6,15 @@ import ThemeButton from './ThemeButton';
 import NavBar from './NavBar';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import { useScrollEffect } from '../hooks/useScrollEffect';
+import { NAV_SECTION_IDS } from '../constants/nav';
 
 const SCROLL_THRESHOLD = 10;
-
-const SECTION_IDS = ['about', 'experience'];
 
 export default function Header(): React.ReactElement {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const activeSection = useScrollSpy(SECTION_IDS, 120);
+  const activeSection = useScrollSpy(NAV_SECTION_IDS, 120);
 
   const sentence = {
     hidden: { opacity: 0 },

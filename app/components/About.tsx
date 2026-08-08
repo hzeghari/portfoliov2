@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { FEATURED_SKILLS } from '../constants/skills';
+import SectionHeading from './SectionHeading';
 
 export default function About(): React.ReactElement {
   return (
@@ -9,22 +10,9 @@ export default function About(): React.ReactElement {
       className='min-h-screen max-w-4xl my-0 mx-auto px-4 py-24 sm:py-16'
       aria-labelledby="about-heading"
     >
-      {/* Section Header */}
-      <div className='flex items-center relative mt-3 mx-0 mb-10 sm:mb-8 max-w-full'>
-        <span className='relative mr-2.5 text-lg sm:text-base font-mono font-normal text-primary-700 dark:text-(--accent)' aria-hidden="true">
-          01.
-        </span>
-        <h2 
-          id="about-heading" 
-          className='font-serif text-3xl sm:text-2xl whitespace-nowrap'
-        >
-          About Me
-        </h2>
-        <span 
-          className='block relative w-72 sm:w-20 h-px ml-5 sm:ml-3 bg-current opacity-20' 
-          aria-hidden="true"
-        />
-      </div>
+      <SectionHeading id="about-heading" number="01">
+        About Me
+      </SectionHeading>
 
       {/* Content Grid */}
       <div className='grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 sm:gap-10'>
