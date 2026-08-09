@@ -21,22 +21,6 @@ export interface Project {
  */
 export const PROJECTS: Project[] = [
   {
-    title: 'IZI Safety Platform',
-    context: 'IZI Safety',
-    description:
-      'Workplace safety platform I build features for day to day, spanning user management, system efficiency work, and the APIs behind them. My work covers both the React front end and the Nest.js services underneath.',
-    technologies: [
-      'React.js',
-      'TypeScript',
-      'Nest.js',
-      'TypeORM',
-      'Redux',
-      'React Query',
-      'Docker',
-    ],
-    featured: true,
-  },
-  {
     title: 'Marscan',
     context: 'Freelance',
     description:
