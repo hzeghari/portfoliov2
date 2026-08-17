@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import ThemeButton from './ThemeButton';
 import NavBar from './NavBar';
 import { useScrollSpy } from '../hooks/useScrollSpy';
@@ -25,7 +25,7 @@ export default function Header(): React.ReactElement {
         staggerChildren: 0.25,
       },
     },
-  };
+  } satisfies Variants;
 
   const word = {
     hidden: {
@@ -40,7 +40,7 @@ export default function Header(): React.ReactElement {
         duration: 0.75,
       },
     },
-  };
+  } satisfies Variants;
 
   useScrollEffect(() => {
     const currentY = window.scrollY;
