@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 export default function Hero(): React.ReactElement {
   const sentence = {
@@ -12,7 +12,7 @@ export default function Hero(): React.ReactElement {
         staggerChildren: 0.15,
       },
     },
-  };
+  } satisfies Variants;
 
   const word = {
     hidden: {
@@ -27,19 +27,19 @@ export default function Hero(): React.ReactElement {
         duration: 0.4,
       },
     },
-  };
+  } satisfies Variants;
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
         ease: 'easeOut',
       },
     },
-  };
+  } satisfies Variants;
 
   return (
     <section 
