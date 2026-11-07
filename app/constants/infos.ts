@@ -82,8 +82,8 @@ export const EXPERIENCES: Experience[] = [
     location: 'Casablanca',
     period: 'Sep 2019 - Jun 2020',
     description: [
-      'Project 1: Developed Client Accounts Management Module for Back-office System using React, JavaScript, Node.js, Express.js and Socket.IO',
-      'Project 2: Maintained Web Application for Online Order Taking using PHP, Laravel, HTML/CSS/JS, jQuery and MySQL',
+      'Built the client-accounts module for an internal back office: React on the front end, Node.js and Express on the back end, and Socket.IO so account updates showed up live',
+      'Maintained La Livraison (lalivraison.ma), an online order-taking site, across its Laravel back end and jQuery front end',
     ],
     technologies: [
       'React',
