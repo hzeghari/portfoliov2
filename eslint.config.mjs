@@ -11,7 +11,7 @@ const eslintConfig = defineConfig([
     // eslint-plugin-react's "detect" path still calls context.getFilename(),
     // which ESLint 10 removed. Pin the version so that branch is skipped.
     settings: {
-      react: { version: '19.2.8' },
+      react: { version: '19.3.1' },
     },
   },
   // Override default ignores of eslint-config-next.
