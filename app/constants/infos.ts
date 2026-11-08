@@ -70,11 +70,10 @@ export const EXPERIENCES: Experience[] = [
     location: 'Casablanca',
     period: 'Jun 2020 - May 2023',
     description: [
-      'Developed and maintained back-office and web applications, focusing on optimizing user interfaces and enhancing back-end functionality',
-      'Managed projects from initial analysis and design to final deployment',
-      'Marscan: Developed a comprehensive web application for a company specializing in food and feed product importation, utilizing React.js for front-end development and Node.js for back-end functionality, deployed on a VPS',
+      'Took client sites and back offices from analysis and design through deployment, and maintained them after launch',
+      'Built Marscan for a food and feed importer: React on the front end, Node.js and Express on the back end, MongoDB for the data, and hosting on a VPS',
     ],
-    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'VPS'],
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
     title: 'Full-Stack Developer',
